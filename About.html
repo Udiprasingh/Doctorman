@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DoctorMans - Healthcare</title>
+
+    <link rel="icon" type="image/x-icon" href="image.png">
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: #172033;
+}
+
+p {
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    width: 100%;
+
+    min-height: 90px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 10px 40px;
+
+    background: white;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 40px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #172033;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    width: 100%;
+
+    min-height: 450px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 60px 20px;
+
+    background: white;
+
+    text-align: center;
+}
+
+.hero-content {
+    width: 100%;
+
+    max-width: 900px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+
+    line-height: 1.2;
+
+    color: #172033;
+
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 21px;
+
+    color: #52627a;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   MISSION / VISION
+===================================================== */
+
+.mission-container {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 60px auto;
+
+    padding: 0 20px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 40px;
+}
+
+.innerDiv {
+    background: antiquewhite;
+
+    border: 2px solid #222;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    padding-bottom: 20px;
+
+    transition: 0.3s;
+}
+
+.innerDiv:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.innerDiv img {
+    width: 100px;
+    height: 100px;
+
+    display: block;
+
+    object-fit: contain;
+
+    margin: 20px auto;
+}
+
+.innerDiv h2 {
+    text-align: center;
+
+    font-size: 26px;
+
+    color: rgb(21, 101, 74);
+
+    margin-bottom: 12px;
+
+    padding: 0 15px;
+}
+
+.innerDiv > p {
+    color: rgb(23, 105, 105);
+
+    padding: 0 25px;
+
+    font-family: "Times New Roman", Times, serif;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    text-align: justify;
+}
+
+
+/* =====================================================
+   OUR IMPACT
+===================================================== */
+
+.impact-section {
+    width: 100%;
+
+    background: #2948b5;
+
+    padding: 70px 0 58px;
+
+    overflow: hidden;
+}
+
+
+/* IMPACT HEADING */
+
+.impact-heading {
+    text-align: center;
+
+    color: white;
+
+    margin-bottom: 60px;
+}
+
+.impact-heading h2 {
+    font-size: 46px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+.impact-heading p {
+    font-size: 24px;
+
+    font-weight: 500;
+
+    color: #e8edff;
+
+    margin: 0;
+}
+
+
+/* IMPACT CARDS */
+
+.impact-cards {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 29px;
+
+    padding: 0;
+}
+
+.impact-card {
+    min-height: 152px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 19px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+.impact-card:hover {
+    background: rgba(255, 255, 255, 0.14);
+
+    transform: translateY(-4px);
+}
+
+.impact-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 46px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    color: white;
+}
+
+.impact-card p {
+    margin: 0;
+
+    font-size: 20px;
+
+    line-height: 1.3;
+
+    font-weight: 600;
+
+    color: #e8edff;
+}
+
+
+/* =====================================================
+   WHAT WE OFFER
+===================================================== */
+
+.offer-section {
+    width: 100%;
+
+    padding: 70px 20px;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size: 36px;
+
+    color: #172033;
+
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    text-align: center;
+
+    color: #52627a;
+
+    font-size: 19px;
+
+    margin-bottom: 45px;
+}
+
+.offer-container {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 40px;
+}
+
+
+/* =====================================================
+   OFFER LIST
+===================================================== */
+
+.offer-card {
+    background: antiquewhite;
+
+    border: 2px solid #222;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    transition: 0.3s;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.offer-card img {
+    width: 100px;
+    height: 100px;
+
+    display: block;
+
+    object-fit: contain;
+
+    margin: 0 auto 15px;
+}
+
+.offer-card h2 {
+    text-align: center;
+
+    color: rgb(21, 101, 74);
+
+    font-size: 26px;
+
+    margin-bottom: 10px;
+}
+
+.offer-card > p {
+    text-align: center;
+
+    color: rgb(23, 105, 105);
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+.offer-card ul {
+    list-style: none;
+
+    padding: 0;
+}
+
+.offer-card li {
+    position: relative;
+
+    padding: 9px 0 9px 28px;
+
+    color: rgb(23, 105, 105);
+
+    font-family: "Times New Roman", Times, serif;
+
+    font-size: 17px;
+
+    line-height: 1.5;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.offer-card li:last-child {
+    border-bottom: none;
+}
+
+.offer-card li::before {
+    content: "✓";
+
+    position: absolute;
+
+    left: 0;
+
+    color: #2563eb;
+
+    font-weight: bold;
+
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   CORE VALUES
+===================================================== */
+
+.values-section {
+    width: 100%;
+
+    padding: 60px 0;
+}
+
+.values-heading {
+    text-align: center;
+
+    padding: 0 20px;
+
+    margin-bottom: 45px;
+}
+
+.values-heading h2 {
+    font-size: 36px;
+
+    color: #172033;
+
+    margin-bottom: 12px;
+}
+
+.values-heading p {
+    font-size: 19px;
+
+    color: #52627a;
+
+    font-style: italic;
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 0 20px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-rows: repeat(2, 1fr);
+
+    gap: 60px 50px;
+}
+
+.feature-box {
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =====================================================
+   ICON BOX
+===================================================== */
+
+.icon {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 19px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 21px;
+
+    position: relative;
+}
+
+
+/* =====================================================
+   TIME ICON
+===================================================== */
+
+.time-icon {
+    background: #dbeafe;
+}
+
+.clock {
+    width: 36px;
+    height: 36px;
+
+    border: 3px solid #2563eb;
+
+    border-radius: 50%;
+
+    position: relative;
+}
+
+.clock::before {
+    content: "";
+
+    position: absolute;
+
+    width: 3px;
+    height: 12px;
+
+    background: #2563eb;
+
+    left: 50%;
+    top: 6px;
+
+    transform: translateX(-50%);
+
+    border-radius: 5px;
+}
+
+.clock::after {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 3px;
+
+    background: #2563eb;
+
+    left: 50%;
+    top: 18px;
+
+    transform: rotate(45deg);
+
+    transform-origin: left center;
+
+    border-radius: 5px;
+}
+
+
+/* =====================================================
+   SECURITY ICON
+===================================================== */
+
+.security-icon {
+    background: #d1fae5;
+}
+
+.shield {
+    width: 42px;
+    height: 46px;
+
+    border: 3px solid #059669;
+
+    border-radius: 45% 45% 50% 50%;
+
+    color: #059669;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   INNOVATION ICON
+===================================================== */
+
+.innovation-icon {
+    background: #f3e8ff;
+}
+
+.sparkle {
+    position: absolute;
+
+    color: #9333ea;
+
+    font-weight: bold;
+}
+
+.sparkle.big {
+    font-size: 40px;
+
+    left: 17px;
+
+    top: 17px;
+}
+
+.sparkle.small {
+    font-size: 23px;
+
+    right: 12px;
+
+    top: 14px;
+}
+
+.sparkle.tiny {
+    font-size: 18px;
+
+    right: 13px;
+
+    bottom: 11px;
+}
+
+
+/* =====================================================
+   PATIENT CARE ICON
+===================================================== */
+
+.care-icon {
+    background: #fee2e2;
+}
+
+.heart {
+    color: #e11d48;
+
+    font-size: 50px;
+
+    line-height: 1;
+}
+
+
+/* =====================================================
+   FEATURE TEXT
+===================================================== */
+
+.feature-box h2 {
+    font-size: 26px;
+
+    line-height: 1.2;
+
+    color: #172036;
+
+    font-weight: 700;
+
+    margin-bottom: 14px;
+}
+
+.feature-box p {
+    max-width: 500px;
+
+    padding: 0 15px;
+
+    font-size: 20px;
+
+    line-height: 1.45;
+
+    color: #52627a;
+}
+
+
+/* =====================================================
+   REGISTER / READY SECTION
+===================================================== */
+
+.ready-section {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 60px auto;
+
+    padding: 0 20px;
+}
+
+.ready-card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-img {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin-bottom: 20px;
+}
+
+.ready-card h2 {
+    font-size: 30px;
+
+    color: #172033;
+
+    margin-bottom: 15px;
+}
+
+.ready-card > p {
+    max-width: 700px;
+
+    margin: auto auto 25px;
+
+    color: #52627a;
+
+    font-size: 18px;
+}
+
+.register-box {
+    padding: 20px;
+
+    background: #f5f8ff;
+
+    border: 2px dashed #2563eb;
+
+    border-radius: 15px;
+}
+
+.register-btn {
+    display: inline-block;
+
+    padding: 13px 30px;
+
+    background: #2563eb;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.register-btn:hover {
+    background: #1749c0;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+    width: 100%;
+
+    background: #172033;
+
+    color: white;
+
+    margin-top: 60px;
+}
+
+.footer-container {
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 50px 25px;
+
+    display: grid;
+
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.footer-column h2,
+.footer-column h3 {
+    color: white;
+
+    margin-bottom: 8px;
+}
+
+.footer-column h2 {
+    font-size: 26px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+}
+
+.footer-column p {
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.footer-column a {
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    color: white;
+
+    text-decoration: underline;
+}
+
+.secure {
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-top: 8px;
+
+    padding: 7px 12px;
+
+    border: 1px solid #475569;
+
+    border-radius: 6px;
+
+    color: #e2e8f0;
+
+    font-size: 13px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #334155;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    margin: 5px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #e2e8f0;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 10px 25px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =====================================================
+   MOBILE / TABLET
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px 25px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+
+    /* MISSION */
+
+    .mission-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        margin: 40px auto;
+    }
+
+
+    /* IMPACT */
+
+    .impact-section {
+        padding: 55px 20px 45px;
+    }
+
+    .impact-heading {
+        margin-bottom: 40px;
+    }
+
+    .impact-heading h2 {
+        font-size: 38px;
+    }
+
+    .impact-heading p {
+        font-size: 20px;
+    }
+
+    .impact-cards {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .impact-card {
+        min-height: 135px;
+    }
+
+    .impact-card h3 {
+        font-size: 40px;
+    }
+
+    .impact-card p {
+        font-size: 18px;
+    }
+
+
+    /* OFFER */
+
+    .offer-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* CORE VALUES */
+
+    .features {
+        grid-template-columns: 1fr;
+
+        grid-template-rows: auto;
+
+        gap: 50px;
+    }
+
+    .feature-box h2 {
+        font-size: 23px;
+    }
+
+    .feature-box p {
+        font-size: 18px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .logo img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+
+
+    /* HERO */
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+
+    /* MISSION */
+
+    .innerDiv h2 {
+        font-size: 23px;
+    }
+
+    .innerDiv > p {
+        font-size: 16px;
+    }
+
+
+    /* IMPACT */
+
+    .impact-section {
+        padding: 45px 15px 40px;
+    }
+
+    .impact-heading h2 {
+        font-size: 32px;
+    }
+
+    .impact-heading p {
+        font-size: 17px;
+    }
+
+    .impact-card h3 {
+        font-size: 36px;
+    }
+
+    .impact-card p {
+        font-size: 16px;
+    }
+
+
+    /* OFFER */
+
+    .section-title {
+        font-size: 29px;
+    }
+
+    .section-subtitle {
+        font-size: 17px;
+    }
+
+
+    /* CORE VALUES */
+
+    .values-heading h2 {
+        font-size: 29px;
+    }
+
+    .values-heading p {
+        font-size: 17px;
+    }
+
+    .feature-box h2 {
+        font-size: 22px;
+    }
+
+    .feature-box p {
+        font-size: 16px;
+    }
+
+
+    /* READY */
+
+    .ready-card {
+        padding: 30px 15px;
+    }
+
+    .ready-card h2 {
+        font-size: 24px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        padding: 35px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <img
+                src="image.png"
+                alt="Doctor Logo">
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="Home.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="About.html">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="Doctor.html">
+                    Doctor
+                </a>
+            </li>
+
+            <li>
+                <a href="Contact us.html">
+                    Contact Us
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Making Healthcare Accessible and Affordable
+        </h1>
+
+        <p>
+            Revolutionizing the way patients and doctors interact,
+            eliminating waiting room anxiety and bringing healthcare
+            into the digital age.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MISSION AND VISION
+===================================================== -->
+
+<section class="mission-container">
+
+
+    <div class="innerDiv">
+
+        <img
+            src="image copy 7.png"
+            alt="Our Mission">
+
+        <h2>
+            OUR MISSION
+        </h2>
+
+        <p>
+            To make healthcare visits efficient, stress-free,
+            and patient-centric. We empower patients with digital
+            OPD tokens, real-time queue tracking, and the freedom
+            to wait comfortably at home or nearby—eliminating
+            the anxiety of crowded waiting rooms.
+        </p>
+
+    </div>
+
+
+
+    <div class="innerDiv">
+
+        <img
+            src="image copy 8.png"
+            alt="Our Vision">
+
+        <h2>
+            OUR VISION
+        </h2>
+
+        <p>
+            To become India's most trusted healthcare technology
+            partner, transforming every clinic visit into a seamless
+            experience. We envision a future where patients never
+            have to endure long waits, and doctors can focus on
+            care, not crowds.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     OUR IMPACT
+===================================================== -->
+
+<section class="impact-section">
+
+
+    <div class="impact-heading">
+
+        <h2>
+            Our Impact
+        </h2>
+
+        <p>
+            Transforming healthcare, one appointment at a time
+        </p>
+
+    </div>
+
+
+    <div class="impact-cards">
+
+
+        <div class="impact-card">
+
+            <h3>
+                100K+
+            </h3>
+
+            <p>
+                Patients Served
+            </p>
+
+        </div>
+
+
+
+        <div class="impact-card">
+
+            <h3>
+                45 Min
+            </h3>
+
+            <p>
+                Avg. Time Saved
+            </p>
+
+        </div>
+
+
+
+        <div class="impact-card">
+
+            <h3>
+                98%
+            </h3>
+
+            <p>
+                Satisfaction Rate
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     WHAT WE OFFER
+===================================================== -->
+
+<section class="offer-section">
+
+
+    <h2 class="section-title">
+        What We Offer
+    </h2>
+
+    <p class="section-subtitle">
+        Comprehensive solutions for patients, doctors,
+        and healthcare facilities
+    </p>
+
+
+    <div class="offer-container">
+
+
+        <!-- PATIENTS -->
+
+        <div class="offer-card">
+
+            <img
+                src="image copy 9.png"
+                alt="For Patients">
+
+            <h2>
+                For Patients
+            </h2>
+
+            <p>
+                Experience healthcare without the wait
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Book OPD tokens online from anywhere, anytime
+                </li>
+
+                <li>
+                    Real-time queue tracking with live updates
+                </li>
+
+                <li>
+                    Estimated arrival time so you can plan your day
+                </li>
+
+                <li>
+                    Digital health records accessible on the go
+                </li>
+
+                <li>
+                    No more crowded waiting rooms
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- DOCTORS -->
+
+        <div class="offer-card">
+
+            <img
+                src="image copy 10.png"
+                alt="For Doctors and Clinics">
+
+            <h2>
+                For Doctors &amp; Clinics
+            </h2>
+
+            <p>
+                Streamline your practice management
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Automated queue management system
+                </li>
+
+                <li>
+                    Real-time patient flow monitoring
+                </li>
+
+                <li>
+                    Reduced waiting room congestion
+                </li>
+
+                <li>
+                    Digital patient records and history
+                </li>
+
+                <li>
+                    Enhanced patient satisfaction and reviews
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CORE VALUES
+===================================================== -->
+
+<section class="values-section">
+
+
+    <div class="values-heading">
+
+        <h2>
+            Our Core Values
+        </h2>
+
+        <p>
+            Principles that guide everything we do
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <!-- TIME RESPECT -->
+
+        <div class="feature-box">
+
+            <div class="icon time-icon">
+
+                <div class="clock"></div>
+
+            </div>
+
+
+            <h2>
+                Time Respect
+            </h2>
+
+
+            <p>
+                We value everyone's time—patients,
+                doctors, and staff alike.
+            </p>
+
+        </div>
+
+
+
+        <!-- SECURITY -->
+
+        <div class="feature-box">
+
+            <div class="icon security-icon">
+
+                <div class="shield">
+                    ✓
+                </div>
+
+            </div>
+
+
+            <h2>
+                Security First
+            </h2>
+
+
+            <p>
+                Your health data is protected with
+                industry-leading security measures.
+            </p>
+
+        </div>
+
+
+
+        <!-- INNOVATION -->
+
+        <div class="feature-box">
+
+            <div class="icon innovation-icon">
+
+                <span class="sparkle big">
+                    ✦
+                </span>
+
+                <span class="sparkle small">
+                    ✦
+                </span>
+
+                <span class="sparkle tiny">
+                    ✦
+                </span>
+
+            </div>
+
+
+            <h2>
+                Innovation
+            </h2>
+
+
+            <p>
+                Constantly evolving to meet the
+                changing needs of healthcare.
+            </p>
+
+        </div>
+
+
+
+        <!-- PATIENT CARE -->
+
+        <div class="feature-box">
+
+            <div class="icon care-icon">
+
+                <div class="heart">
+                    ♥
+                </div>
+
+            </div>
+
+
+            <h2>
+                Patient Care
+            </h2>
+
+
+            <p>
+                Every decision is made with patient
+                well-being at the forefront.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     READY SECTION
+===================================================== -->
+
+<section class="ready-section">
+
+
+    <div class="ready-card">
+
+
+        <img
+            src="image copy 5.png"
+            alt="Doctor"
+            class="doctor-img">
+
+
+        <h2>
+            Ready to Transform Your Healthcare Experience?
+        </h2>
+
+
+        <p>
+            Join thousands of patients and hundreds of doctors
+            who trust DoctorMans for better healthcare management.
+        </p>
+
+
+        <div class="register-box">
+
+            <a
+                href="register.html"
+                class="register-btn">
+
+                Register Your Clinic
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+
+    <div class="footer-container">
+
+
+        <!-- ABOUT -->
+
+        <div class="footer-column">
+
+            <h2>
+                DoctorMans
+            </h2>
+
+            <h3>
+                OPD Management System
+            </h3>
+
+            <p>
+                DoctorMans is a comprehensive OPD management
+                system that streamlines the process of managing
+                outpatient departments. It provides features
+                for appointment scheduling, patient management,
+                and doctor-patient communication.
+            </p>
+
+            <div class="secure">
+                🔒 Secure &amp; Encrypted
+            </div>
+
+        </div>
+
+
+
+        <!-- POLICIES -->
+
+        <div class="footer-column">
+
+            <h3>
+                POLICIES
+            </h3>
+
+            <a href="#">
+                Terms Of Use
+            </a>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            <a href="#">
+                Cookie Policy
+            </a>
+
+        </div>
+
+
+
+        <!-- CONTACT -->
+
+        <div class="footer-column">
+
+            <h3>
+                CONTACT US
+            </h3>
+
+            <a href="#">
+                Whatsapp
+            </a>
+
+            <p>
+                Phone: +1 (123) 456-7890
+            </p>
+
+            <p>
+                Email: info@doctormans.com
+            </p>
+
+            <p>
+                Address: 123 Healthcare St,
+                Medical City, Uttar Pradesh, India
+            </p>
+
+        </div>
+
+
+
+        <!-- DISCLAIMER -->
+
+        <div class="footer-column">
+
+            <h3>
+                About
+            </h3>
+
+            <p>
+                DoctorMans is a comprehensive OPD management
+                system that streamlines the process of managing
+                outpatient departments. It provides features
+                for appointment scheduling, patient management,
+                and doctor-patient communication.
+            </p>
+
+            <p>
+
+                <strong>
+                    Disclaimer:
+                </strong>
+
+                The information provided on this website is
+                for general informational purposes only and
+                should not be considered as medical advice.
+                Always consult with a qualified healthcare
+                professional for any medical concerns or
+                questions.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <p>
+            &copy; 2024 DoctorMans. All rights reserved.
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="#">
+                Terms
+            </a>
+
+            <span>
+                .
+            </span>
+
+            <a href="#">
+                Privacy
+            </a>
+
+            <span>
+                .
+            </span>
+
+            <a href="#">
+                Refund
+            </a>
+
+        </div>
+
+    </div>
+
+
+</footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Doctor</title>
+
+<link rel="icon" type="image/x-icon" href="image.png">
+
+<style>
+
+/* ================= RESET (was duplicated twice — merged into one) ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.logo img{
+    display:block;
+}
+
+.nav-links{
+    display:flex;
+    gap:40px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#000;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#0d6efd;
+}
+
+/* ================= MAIN / HERO ================= */
+
+main{
+    padding:50px 20px;
+}
+
+main h1{
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    text-shadow:2px 2px 5px #7ea6ff;
+    margin-bottom:20px;
+}
+
+main p{
+    max-width:700px;
+    margin:0 auto 40px;
+    text-align:center;
+    line-height:1.8;
+    color:#555;
+}
+
+/* ================= SEARCH BAR ================= */
+
+.search-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    width:650px;
+    max-width:95%;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:50px;
+    padding:8px 15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.search-icon{
+    width:30px;
+    height:30px;
+    margin-right:12px;
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    font-size:16px;
+    padding:10px;
+    background:transparent;
+}
+
+.search-box button{
+    border:none;
+    background:#0d6efd;
+    color:white;
+    padding:10px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.search-box button:hover{
+    background:#0b5ed7;
+}
+
+/* ================= RESPONSIVE (navbar / search) ================= */
+
+@media (max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .search-box button{
+        padding:10px 15px;
+        font-size:14px;
+    }
+
+}
+
+/* ================= STATS SECTION ================= */
+
+#bottom{
+    width:90%;
+    max-width:1100px;
+    margin:60px auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+
+    background:#ffffff;
+    border-radius:20px;
+    padding:40px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.card:not(:last-child){
+    border-right:1px solid #ddd;
+    padding-right:20px;
+}
+
+.icon{
+    width:80px;
+    height:80px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:35px;
+    border-radius:20px;
+}
+
+.green{
+    background:#d9f7e9;
+    color:#0b9b67;
+}
+
+.blue{
+    background:#dbe7ff;
+    color:#2d63e2;
+}
+
+.content h4{
+    color:#68758b;
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.content h2{
+    font-size:48px;
+    color:#2d63e2;
+    margin-bottom:5px;
+    text-align:left;
+    text-transform:none;
+    letter-spacing:normal;
+    text-shadow:none;
+}
+
+.card:first-child .content h2{
+    color:#0b9b67;
+}
+
+.content p{
+    color:#555;
+    font-size:18px;
+    max-width:none;
+    text-align:left;
+    margin:0;
+}
+
+@media (max-width:900px){
+
+    #bottom{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        border-right:none !important;
+        border-bottom:1px solid #ddd;
+        padding-bottom:20px;
+    }
+
+    .card:last-child{
+        border-bottom:none;
+        padding-bottom:0;
+    }
+
+}
+
+/* ================= REUSABLE SECTION TITLE (was a bare h2/p tag selector before —
+   that accidentally centered/shadowed every h2 and p on the page, including
+   the footer and testimonial cards) ================= */
+
+.section-title{
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    text-shadow:2px 2px 5px #7ea6ff;
+    margin-bottom:20px;
+}
+
+.section-subtitle{
+    max-width:900px;
+    font-family:"Poppins", sans-serif;
+    margin:0 auto 40px;
+    text-align:center;
+    line-height:1.8;
+    color:#555;
+}
+
+/* ================= HOW IT WORKS ================= */
+
+.relative{
+    position:relative;
+    padding:40px 20px 0;
+}
+
+#outerDiv{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:40px;
+    justify-content:center;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.innerDiv{
+    background:antiquewhite;
+    border:2px solid black;
+    border-radius:20px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.innerDiv:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.innerDiv img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+}
+
+.innerDiv h2{
+    color:rgb(21,101,74);
+    padding:15px 15px 10px;
+    text-align:left;
+    text-transform:none;
+    letter-spacing:normal;
+    text-shadow:none;
+}
+
+.innerDiv p{
+    color:rgb(23,105,105);
+    padding:0 15px 20px;
+    text-align:justify;
+    line-height:1.6;
+    max-width:none;
+    margin:0;
+}
+
+/* ================= DOCTOR REGISTER BANNER ================= */
+
+.doctor-section{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:60px auto;
+    padding:20px;
+    background-color:#2d63e2;
+    max-width:1100px;
+    border-radius:20px;
+}
+
+.doctor-card{
+    width:350px;
+    background:#ffffff;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+.doctor-card:hover{
+    transform:translateY(-5px);
+}
+
+.doctor-img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    margin-bottom:20px;
+    background-color:#7ea6ff;
+    border-radius:50%;
+}
+
+.doctor-card h2{
+    color:#0d6efd;
+    margin-bottom:15px;
+    font-size:28px;
+    text-align:center;
+    text-transform:none;
+    letter-spacing:normal;
+    text-shadow:none;
+}
+
+.doctor-card p{
+    color:#555;
+    line-height:1.6;
+    margin-bottom:25px;
+    max-width:none;
+}
+
+.register-box{
+    background:#f5f8ff;
+    border:2px dashed #0d6efd;
+    border-radius:12px;
+    padding:20px;
+}
+
+.register-btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#0d6efd;
+    color:#fff;
+    padding:12px 28px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.register-btn:hover{
+    background:#084fc7;
+}
+
+@media (max-width:768px){
+
+    .doctor-card{
+        width:100%;
+        max-width:350px;
+    }
+
+}
+
+/* ================= TESTIMONIALS HEADER ================= */
+
+.anumate{
+    padding:40px;
+    text-align:center;
+    background-color:#f5f5f5;
+}
+
+.inline{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+/* ================= TESTIMONIAL CARDS ================= */
+
+#out{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:stretch;
+    gap:40px;
+    margin:60px auto;
+    padding:20px;
+    max-width:1200px;
+}
+
+.in{
+    width:350px;
+    background:#ffffff;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:0.3s;
+}
+
+.in h2{
+    font-size:22px;
+    color:#2d63e2;
+    margin-bottom:12px;
+    text-align:center;
+    text-transform:none;
+    letter-spacing:normal;
+    text-shadow:none;
+}
+
+.in p{
+    color:#555;
+    line-height:1.6;
+    max-width:none;
+    font-style:italic;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background-color:#0d0d0e;
+    color:#eee9e9;
+    text-align:left;
+    padding:40px 20px;
+}
+
+.site-footer{
+    width:100%;
+    margin-top:40px;
+    background:#172033;
+    color:#ffffff;
+    border-top:1px solid #334155;
+}
+
+.footer-container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    padding:45px 25px;
+
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-column{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    text-align:left;
+}
+
+.footer-column h2{
+    margin:0 0 8px;
+    font-size:26px;
+    color:#ffffff;
+    text-align:left;
+    text-transform:none;
+    letter-spacing:normal;
+    text-shadow:none;
+}
+
+.footer-column h3{
+    margin:0 0 8px;
+    font-size:18px;
+    color:#ffffff;
+}
+
+.footer-column p{
+    margin:0;
+    color:#cbd5e1;
+    font-size:14px;
+    line-height:1.7;
+    max-width:none;
+    text-align:left;
+}
+
+.footer-column a{
+    width:fit-content;
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.2s;
+}
+
+.footer-column a:hover{
+    color:#ffffff;
+    text-decoration:underline;
+}
+
+.secure{
+    display:inline-block;
+    width:fit-content;
+    margin-top:8px;
+    padding:7px 12px;
+    border:1px solid #475569;
+    border-radius:6px;
+    color:#e2e8f0;
+    font-size:13px;
+}
+
+.footer-bottom{
+    border-top:1px solid #334155;
+    padding:22px 25px;
+    text-align:center;
+}
+
+.footer-bottom p{
+    margin:5px 0;
+    color:#cbd5e1;
+    font-size:13px;
+    max-width:none;
+    text-align:center;
+}
+
+.footer-bottom .legal{
+    max-width:1000px;
+    margin:10px auto;
+    line-height:1.6;
+}
+
+.footer-links{
+    margin-top:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+}
+
+.footer-links a{
+    color:#e2e8f0;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+.footer-links span{
+    color:#64748b;
+}
+
+/* ================= FOOTER RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .footer-container{
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .footer-container{
+        grid-template-columns: 1fr;
+        padding: 35px 20px;
+        gap: 28px;
+    }
+
+    .footer-column h2{
+        font-size: 23px;
+    }
+
+    .footer-column h3{
+        font-size: 17px;
+    }
+
+    .footer-bottom{
+        padding: 20px 15px;
+    }
+
+    .footer-bottom .legal{
+        font-size: 12px;
+    }
+
+    .footer-links{
+        gap: 8px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+        <img src="image.png" width="100" height="100" alt="Doctor Logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Doctor.html">Doctor</a></li>
+        <li><a href="Contact us.html">Contact Us</a></li>
+    </ul>
+
+</nav>
+
+</header>
+
+<main>
+
+    <h1>Find Your Doctor</h1>
+
+    <p>
+        Find the doctor you need and book your appointment today according to your preferred time.
+    </p>
+
+    <div class="search-container">
+        <form class="search-box">
+            <img src="image copy.png" alt="Location" class="search-icon">
+            <input type="text" placeholder="Search for doctors, hospitals, clinics...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+</main>
+
+<section id="bottom">
+
+    <div class="card">
+        <div class="icon green">&#128101;</div>
+        <div class="content">
+            <h4>TRUSTED BY</h4>
+            <h2>97,000+</h2>
+            <p>Happy Patients</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="icon blue">&#128337;</div>
+        <div class="content">
+            <h4>TIME SAVED</h4>
+            <h2>45+ Min</h2>
+            <p>Per Visit</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="icon blue">&#128737;</div>
+        <div class="content">
+            <h4>SECURITY</h4>
+            <h2>100%</h2>
+            <p>Secure Payments</p>
+        </div>
+    </div>
+
+</section>
+
+<section class="relative">
+
+    <div class="animate">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Get your virtual token in a few simple steps</p>
+    </div>
+
+    <div id="outerDiv">
+
+        <div class="innerDiv">
+            <img src="image copy 2.png" alt="Search Doctor">
+            <h2>Search Doctor</h2>
+            <p>Find the right doctor for your needs</p>
+        </div>
+
+        <div class="innerDiv">
+            <img src="image copy 3.png" alt="Book Appointment">
+            <h2>Book Appointment</h2>
+            <p>Schedule your visit with the doctor of your choice</p>
+        </div>
+
+        <div class="innerDiv">
+            <img src="image copy 4.png" alt="Track & Visit">
+            <h2>Track &amp; Visit</h2>
+            <p>Monitor your health and schedule follow-up visits</p>
+        </div>
+
+    </div>
+
+    <div class="doctor-section">
+        <div class="doctor-card">
+
+            <img src="image copy 5.png" alt="Doctor" class="doctor-img">
+
+            <h2>Are You a Doctor?</h2>
+
+            <p>
+                Join hundreds of doctors using Doctormans to streamline their OPD
+                and improve patient experience.
+            </p>
+
+            <div class="register-box">
+                <a href="register.html" class="register-btn">Register Now</a>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<div class="anumate">
+    <div class="inline">
+        <img src="image copy 6.png" alt="Doctor" class="doctor-img">
+        <h2 class="section-title" style="margin-bottom:0;">Testimonials</h2>
+    </div>
+    <h2 class="section-title">What Our Patients Say</h2>
+    <p class="section-subtitle">Read what our patients have to say about their experience with Doctormans</p>
+</div>
+
+<div id="out">
+
+    <div class="in">
+        <h2>John Doe</h2>
+        <p>
+            "I had a great experience with Doctormans. 
+            The platform made it easy to find a doctor and book an appointment. Highly recommend!"
+        </p>
+    </div>
+
+    <div class="in">
+        <h2>Jane Smith</h2>
+        <p>
+            "Doctormans has revolutionized the way I manage my healthcare. The virtual token system is efficient and convenient. Thank you!"
+        </p>
+    </div>
+
+    <div class="in">
+        <h2>Michael Johnson</h2>
+        <p>
+            "I appreciate the transparency and security of Doctormans. It gives me peace of mind knowing my information is safe while accessing healthcare services."
+        </p>
+    </div>
+
+</div>
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-column footer-about">
+            <h2>DoctorMans</h2>
+            <h3>OPD Management System</h3>
+            <p>
+                DoctorMans is a comprehensive OPD management system that streamlines the process of managing outpatient departments. It provides features for appointment scheduling, patient management, and doctor-patient communication.
+            </p>
+            <div class="secure">&#128274; Secure &amp; Encrypted</div>
+        </div>
+
+        <div class="footer-column">
+            <h3>POLICIES</h3>
+            <a href="#">Terms Of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>CONTACT US</h3>
+            <a href="#">Whatsapp</a>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Email: info@doctormans.com</p>
+            <p>Address: 123 Healthcare St, Medical City, Uttar Pradesh, India</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>About</h3>
+            <p>
+                DoctorMans is a comprehensive OPD management system that streamlines the process
+                of managing outpatient departments. It provides features for appointment scheduling,
+                patient management, and doctor-patient communication.
+            </p>
+            <p>
+                <strong>Disclaimer:</strong>
+                The information provided on this website is for general informational purposes only and should not be considered as medical advice. Always consult with a qualified healthcare professional for any medical concerns or questions.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2024 DoctorMans. All rights reserved.</p>
+
+        <div class="footer-links">
+            <a href="#">Terms</a>
+            <span>.</span>
+            <a href="#">Privacy</a>
+            <span>.</span>
+            <a href="#">Refund</a>
+        </div>
+    </div>
+
+</footer>
+
+</body>
+</html>

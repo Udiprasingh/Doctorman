@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doctors</title>
+
+    <link rel="icon" type="image/x-icon" href="image.png">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 12px 40px;
+
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0d6efd;
+        }
+
+
+        /* ================= SEARCH SECTION ================= */
+
+        .search-section {
+            width: 100%;
+            padding: 35px 20px;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .search-title {
+            width: auto;
+            margin-bottom: 20px;
+
+            font-size: 24px;
+            font-weight: 700;
+
+            color: #172033;
+        }
+
+        .search-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 280px;
+
+            display: flex;
+            align-items: center;
+
+            background: #ffffff;
+
+            border: 1px solid #d5dbe5;
+            border-radius: 50px;
+
+            padding: 5px 7px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-box input {
+            flex: 1;
+
+            border: none;
+            outline: none;
+
+            padding: 12px 15px;
+
+            font-size: 15px;
+
+            background: transparent;
+        }
+
+        .search-box button {
+            border: none;
+
+            background: #0d6efd;
+            color: #ffffff;
+
+            padding: 11px 25px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #0b5ed7;
+        }
+
+
+        /* ================= FILTERS ================= */
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filters select {
+            min-width: 150px;
+
+            padding: 12px 35px 12px 12px;
+
+            border: 1px solid #d5dbe5;
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            color: #333333;
+
+            font-size: 14px;
+
+            outline: none;
+
+            cursor: pointer;
+        }
+
+        .filters select:focus {
+            border-color: #0d6efd;
+        }
+
+
+        /* ================= DOCTOR GRID ================= */
+
+        #outerDiv {
+            width: 100%;
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        /* ================= DOCTOR CARD ================= */
+
+        .innerDiv {
+            background: #ffffff;
+
+            border: 1px solid #e1e7ef;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            padding: 0 20px 15px;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+
+            min-width: 0;
+        }
+
+        .innerDiv:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.14);
+        }
+
+
+        /* ================= DOCTOR IMAGE ================= */
+
+        .doctor-image {
+            width: 100%;
+            height: 190px;
+
+            object-fit: cover;
+
+            display: block;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* ================= DOCTOR NAME ================= */
+
+        .doctor-name {
+            width: auto;
+
+            margin: 0 0 7px;
+
+            padding: 0;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            color: #172033;
+        }
+
+
+        /* ================= SPECIALIZATION ================= */
+
+        .specialization {
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            padding: 6px 12px;
+
+            background: #f0eaff;
+
+            color: #7c3aed;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: 500;
+        }
+
+
+        /* ================= DETAILS ================= */
+
+        .doctor-detail {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 8px;
+
+            margin-bottom: 12px;
+
+            color: #40557a;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .icon {
+            width: 20px;
+
+            flex-shrink: 0;
+
+            color: #8ba0c2;
+
+            font-size: 17px;
+
+            text-align: center;
+        }
+
+
+        /* ================= CONSULTATION FEE ================= */
+
+        .fee {
+            margin-top: 5px;
+            margin-bottom: 15px;
+
+            color: #111827;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        /* ================= GET TOKEN ================= */
+
+        .get-token {
+            width: 100%;
+
+            height: 42px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #2864e8;
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            margin-bottom: 8px;
+        }
+
+        .get-token:hover {
+            background: #1d56d5;
+        }
+
+
+        /* ================= OPD STATUS ================= */
+
+        .opd-status {
+            width: 100%;
+
+            min-height: 44px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 9px;
+
+            border: 1px solid #86efac;
+
+            border-radius: 9px;
+
+            background: #f0fdf4;
+
+            color: #047857;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            padding: 6px;
+        }
+
+        .live-dot {
+            width: 9px;
+            height: 9px;
+
+            display: inline-block;
+
+            flex-shrink: 0;
+
+            background: #22c55e;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 4px #dcfce7;
+        }
+
+        .live {
+            padding: 5px 8px;
+
+            background: #dcfce7;
+
+            color: #22c55e;
+
+            border-radius: 5px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 10px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .logo img {
+                width: 65px;
+                height: 65px;
+            }
+
+            .nav-links {
+                gap: 20px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 15px;
+            }
+
+            .search-section {
+                padding: 25px 15px;
+            }
+
+            .search-title {
+                font-size: 21px;
+            }
+
+            .search-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .filters {
+                width: 100%;
+            }
+
+            .filters select {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            #outerDiv {
+                grid-template-columns:
+                    repeat(auto-fit, minmax(250px, 1fr));
+
+                padding: 15px;
+
+                gap: 20px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .navbar {
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .search-title {
+                font-size: 20px;
+            }
+
+            .search-box {
+                border-radius: 12px;
+            }
+
+            .search-box button {
+                padding: 10px 15px;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .filters select {
+                width: 100%;
+            }
+
+            #outerDiv {
+                grid-template-columns: 1fr;
+            }
+
+            .innerDiv {
+                width: 100%;
+            }
+        }
+
+        .footer{
+    background-color:#0d0d0e;
+    color:#eee9e9;
+    text-align:left;
+    padding:40px 20px;
+}
+
+.site-footer{
+    width:100%;
+    margin-top:40px;
+    background:#172033;
+    color:#ffffff;
+    border-top:1px solid #334155;
+}
+
+.footer-container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    padding:45px 25px;
+
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-column{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    text-align:left;
+}
+
+.footer-column h2{
+    margin:0 0 8px;
+    font-size:26px;
+    color:#ffffff;
+    text-align:left;
+    text-transform:none;
+    letter-spacing:normal;
+    text-shadow:none;
+}
+
+.footer-column h3{
+    margin:0 0 8px;
+    font-size:18px;
+    color:#ffffff;
+}
+
+.footer-column p{
+    margin:0;
+    color:#cbd5e1;
+    font-size:14px;
+    line-height:1.7;
+    max-width:none;
+    text-align:left;
+}
+
+.footer-column a{
+    width:fit-content;
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.2s;
+}
+
+.footer-column a:hover{
+    color:#ffffff;
+    text-decoration:underline;
+}
+
+.secure{
+    display:inline-block;
+    width:fit-content;
+    margin-top:8px;
+    padding:7px 12px;
+    border:1px solid #475569;
+    border-radius:6px;
+    color:#e2e8f0;
+    font-size:13px;
+}
+
+.footer-bottom{
+    border-top:1px solid #334155;
+    padding:22px 25px;
+    text-align:center;
+}
+
+.footer-bottom p{
+    margin:5px 0;
+    color:#cbd5e1;
+    font-size:13px;
+    max-width:none;
+    text-align:center;
+}
+
+.footer-bottom .legal{
+    max-width:1000px;
+    margin:10px auto;
+    line-height:1.6;
+}
+
+.footer-links{
+    margin-top:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+}
+
+.footer-links a{
+    color:#e2e8f0;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+.footer-links span{
+    color:#64748b;
+}
+
+/* ================= FOOTER RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .footer-container{
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .footer-container{
+        grid-template-columns: 1fr;
+        padding: 35px 20px;
+        gap: 28px;
+    }
+
+    .footer-column h2{
+        font-size: 23px;
+    }
+
+    .footer-column h3{
+        font-size: 17px;
+    }
+
+    .footer-bottom{
+        padding: 20px 15px;
+    }
+
+    .footer-bottom .legal{
+        font-size: 12px;
+    }
+
+    .footer-links{
+        gap: 8px;
+    }
+
+}
+
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <img src="image.png" alt="Doctor Logo">
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="Home.html">Home</a>
+            </li>
+
+            <li>
+                <a href="About.html">About</a>
+            </li>
+
+            <li>
+                <a href="Doctor.html">Doctor</a>
+            </li>
+
+            <li>
+                <a href="Contact us.html">Contact Us</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= SEARCH ================= -->
+
+<main>
+
+    <section class="search-section">
+
+        <div class="search-container">
+
+            <h2 class="search-title">
+                Search & Filter
+            </h2>
+
+
+            <div class="search-row">
+
+                <form class="search-box">
+
+                    <input
+                        type="text"
+                        placeholder="Search for doctors, hospitals, clinics..."
+                    >
+
+                    <button type="submit">
+                        Search
+                    </button>
+
+                </form>
+
+
+                <div class="filters">
+
+                    <select>
+                        <option value="all">
+                            Specialty
+                        </option>
+
+                        <option value="general">
+                            General Physician
+                        </option>
+
+                        <option value="gynecologist">
+                            Gynecologist
+                        </option>
+
+                        <option value="infertility">
+                            Infertility Specialist & Gynecologist
+                        </option>
+
+                        <option value="psychiatrist">
+                            Neuro Psychiatrist
+                        </option>
+
+                        <option value="neurosurgery">
+                            Neurosurgery
+                        </option>
+
+                        <option value="pediatrician">
+                            Pediatrician
+                        </option>
+
+                        <option value="physician">
+                            Physician
+                        </option>
+
+                        <option value="pulmonologist">
+                            Pulmonologist
+                        </option>
+
+                        <option value="sonologist">
+                            Sonologist
+                        </option>
+
+                    </select>
+
+
+                    <select>
+
+                        <option value="all">
+                            Availability
+                        </option>
+
+                        <option value="available">
+                            Available
+                        </option>
+
+                    </select>
+
+
+                    <select>
+
+                        <option value="all">
+                            Price Range
+                        </option>
+
+                        <option value="under500">
+                            Under ₹500
+                        </option>
+
+                        <option value="500-1000">
+                            ₹500 - ₹1000
+                        </option>
+
+                        <option value="1000plus">
+                            ₹1000+
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DOCTOR CARDS ================= -->
+
+    <div id="outerDiv">
+
+
+        <!-- CARD 1 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Sunil Agarwal"
+            >
+
+            <h2 class="doctor-name">
+                Sunil Agarwal
+            </h2>
+
+            <span class="specialization">
+                Pediatrician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Dr. Sunil Agarwal</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 16:50</span>
+            </div>
+
+            <p class="fee">
+                ₹700 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 2 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Amit Tondon"
+            >
+
+            <h2 class="doctor-name">
+                Amit Tondon
+            </h2>
+
+            <span class="specialization">
+                Gynecologist
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>
+                    DR KAMLESH TANDON HOSPITAL & TEST TUBE BABY
+                </span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 15:00 - 20:00</span>
+            </div>
+
+            <p class="fee">
+                ₹1000 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 3 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Gargi Gupta Krishak"
+            >
+
+            <h2 class="doctor-name">
+                Gargi Gupta Krishak
+            </h2>
+
+            <span class="specialization">
+                Gynecologist
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Gargi Nursing Home</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 10:00 - 16:15</span>
+            </div>
+
+            <p class="fee">
+                ₹500 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 4 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Amit Gupta"
+            >
+
+            <h2 class="doctor-name">
+                Amit Gupta
+            </h2>
+
+            <span class="specialization">
+                Pulmonologist
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>CHEST CLINIC</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 17:50</span>
+            </div>
+
+            <p class="fee">
+                ₹700 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 5 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Anurag Jain"
+            >
+
+            <h2 class="doctor-name">
+                Anurag Jain
+            </h2>
+
+            <span class="specialization">
+                Physician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Dr. Anurag Jain Clinic</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 10:00 - 19:00</span>
+            </div>
+
+            <p class="fee">
+                ₹600 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 6 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Amit Saxena"
+            >
+
+            <h2 class="doctor-name">
+                Amit Saxena
+            </h2>
+
+            <span class="specialization">
+                Pediatrician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Dr. Saxena Multispeciality Clinic</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 14:50</span>
+            </div>
+
+            <p class="fee">
+                ₹600 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 7 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Arun Jain"
+            >
+
+            <h2 class="doctor-name">
+                Arun Jain
+            </h2>
+
+            <span class="specialization">
+                Pediatrician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Dr. Arun Child Hospital</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 16:50</span>
+            </div>
+
+            <p class="fee">
+                ₹400 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 8 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Kailash Vishwani"
+            >
+
+            <h2 class="doctor-name">
+                Kailash Vishwani
+            </h2>
+
+            <span class="specialization">
+                Physician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Vishwani Hospital</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 16:50</span>
+            </div>
+
+            <p class="fee">
+                ₹800 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 9 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Kamini Khurana"
+            >
+
+            <h2 class="doctor-name">
+                Kamini Khurana
+            </h2>
+
+            <span class="specialization">
+                Gynecologist
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Ram-Tej Hospital</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 19:50</span>
+            </div>
+
+            <p class="fee">
+                ₹600 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 10 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Ashutosh Saxena"
+            >
+
+            <h2 class="doctor-name">
+                Ashutosh Saxena
+            </h2>
+
+            <span class="specialization">
+                Physician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>A.S. Hospital</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 16:50</span>
+            </div>
+
+            <p class="fee">
+                ₹600 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+        <!-- CARD 11 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Ashutosh Saxena"
+            >
+
+            <h2 class="doctor-name">
+                Manvendra Singh Chauhan
+            </h2>
+
+            <span class="specialization">
+                Pediatrician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Manvendra Singh Chauhan</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 16:50</span>
+            </div>
+
+            <p class="fee">
+                ₹400 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+        <!-- CARD 12 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Ashutosh Saxena"
+            >
+
+            <h2 class="doctor-name">
+                Sunita Malhotra
+            </h2>
+
+            <span class="specialization">
+                Gynecologist
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Blossome Hospital</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 10:00 - 16:50</span>
+            </div>
+
+            <p class="fee">
+                ₹500 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+        <!-- CARD 13 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Ashutosh Saxena"
+            >
+
+            <h2 class="doctor-name">
+                A. K. GUPTA
+            </h2>
+
+            <span class="specialization">
+                 General Physician
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Dr. R.S.S. Gupta Consultation Chamber</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 11:00 - 15:50</span>
+            </div>
+
+            <p class="fee">
+                ₹800 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+        <!-- CARD 14 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Ashutosh Saxena"
+            >
+
+            <h2 class="doctor-name">
+                A Gupta
+            </h2>
+
+            <span class="specialization">
+                Neuro Psychiatrist
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Dr. R.S.S. Gupta Consultation Chamber</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 15:00 - 16:50</span>
+            </div>
+
+            <p class="fee">
+                ₹800 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- CARD 15 -->
+
+        <div class="innerDiv">
+
+            <img
+                class="doctor-image"
+                src="images/image.png"
+                alt="Ashutosh Saxena"
+            >
+
+            <h2 class="doctor-name">
+                Dr. J. P. RAO
+            </h2>
+
+            <span class="specialization">
+            Sonologist
+            </span>
+
+            <div class="doctor-detail">
+                <span class="icon">⌖</span>
+                <span>Raj Ultrasound & Diagnostic Center</span>
+            </div>
+
+            <div class="doctor-detail">
+                <span class="icon">◷</span>
+                <span>Timings: 10:00 - 17:50</span>
+            </div>
+
+            <p class="fee">
+                ₹1100 Consultation Fee
+            </p>
+
+            <button class="get-token">
+                Get Token
+            </button>
+
+            <div class="opd-status">
+                <span class="live-dot"></span>
+
+                <span class="live">
+                    LIVE
+                </span>
+
+                <span>
+                    OPD Status
+                </span>
+            </div>
+
+        </div>
+    </div>
+</main>
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-column footer-about">
+            <h2>DoctorMans</h2>
+            <h3>OPD Management System</h3>
+            <p>
+                DoctorMans is a comprehensive OPD management system that streamlines the process of managing outpatient departments. It provides features for appointment scheduling, patient management, and doctor-patient communication.
+            </p>
+            <div class="secure">&#128274; Secure &amp; Encrypted</div>
+        </div>
+
+        <div class="footer-column">
+            <h3>POLICIES</h3>
+            <a href="#">Terms Of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>CONTACT US</h3>
+            <a href="#">Whatsapp</a>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Email: info@doctormans.com</p>
+            <p>Address: 123 Healthcare St, Medical City, Uttar Pradesh, India</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>About</h3>
+            <p>
+                DoctorMans is a comprehensive OPD management system that streamlines the process
+                of managing outpatient departments. It provides features for appointment scheduling,
+                patient management, and doctor-patient communication.
+            </p>
+            <p>
+                <strong>Disclaimer:</strong>
+                The information provided on this website is for general informational purposes only and should not be considered as medical advice. Always consult with a qualified healthcare professional for any medical concerns or questions.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2024 DoctorMans. All rights reserved.</p>
+
+        <div class="footer-links">
+            <a href="#">Terms</a>
+            <span>.</span>
+            <a href="#">Privacy</a>
+            <span>.</span>
+            <a href="#">Refund</a>
+        </div>
+    </div>
+
+</footer>
+</body>
+</html>
